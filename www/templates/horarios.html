@@ -1,0 +1,32 @@
+<ion-view view-title="Horários">
+
+  <ion-content>
+      <ion-card>
+          <ion-card-content class="cardx">
+              <p>
+                  <strong>Matrícula</strong>
+                  <i>{{matricula}}</i>
+              </p>
+              <p>
+                  <strong>SERVIDOR</strong>
+                  <i>{{nome}}</i>
+              </p>
+              <p>
+                  <strong>MÊS</strong>
+                  <i>{{mes}}</i>
+                  <strong>ANO</strong>
+                  <i>{{ano}}</i>
+              </p>
+          </ion-card-content>
+      </ion-card>
+      <ion-list ng-repeat="(key, array) in data">
+          <ion-item>
+              <strong class='dia'>{{key}}</strong>
+              <div class="horarios" ng-repeat="horario in array">
+                  {{horario}}
+              </div>
+          </ion-item>
+      </ion-list>
+
+  </ion-content>
+</ion-view>

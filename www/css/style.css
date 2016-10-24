@@ -1,0 +1,18 @@
+/* Empty. Add your own CSS if you like */
+.dia {
+    font-weight:bold;
+    font-size:30px;
+    padding:5px;
+    float:left;
+}
+
+.horarios {
+    width:100%;
+    float:left;
+    padding-left: 50px;
+}
+.cardx {
+    width:100%;
+    padding:20px;
+    float:left;
+}
