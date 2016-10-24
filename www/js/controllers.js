@@ -11,35 +11,36 @@ angular.module('starter.controllers', [])
 
   // Form data for the login modal
   $scope.matriculaData = {};
+  var mat = null;
+  
+  $scope.createModal = function(){
+    if($scope.modal){
+        $scope.openModal();
+    }else{
+        // Create the login modal that we will use later
+        $ionicModal.fromTemplateUrl('templates/login.html', {
+          scope: $scope
+        }).then(function(modal) {
+          $scope.modal = modal;
+          $scope.modal.show();
+        });
 
-  var mat = localStorage.getItem("matricula");
+          // Open the login modal
+          $scope.login = function() {
+            $scope.modal.show();
+          };
 
-  if(mat) {
-      $scope.matriculaData.matricula = mat;
-  }
-
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
+        // Triggered in the login modal to close it
+        $scope.closeLogin = function() {
+          $scope.modal.hide();
+        };
+    }
+}
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
       localStorage.setItem("matricula", $scope.matriculaData.matricula);
-    console.log('Doing login', $scope.matriculaData.matricula);
-
+      // console.log('Doing login', $scope.matriculaData.matricula);
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
     $timeout(function() {
@@ -50,6 +51,18 @@ angular.module('starter.controllers', [])
   $scope.logout = function() {
     $state.go('login');
   };
+
+// Inicia aqui o código
+  
+  mat = localStorage.getItem("matricula");
+
+  if(mat != null) {
+    $scope.matriculaData.matricula = mat;
+  }else{
+    $scope.createModal();
+  }
+
+
 })
 
 
