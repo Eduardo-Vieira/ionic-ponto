@@ -13,6 +13,10 @@ angular.module('starter.controllers', [])
   $scope.matriculaData = {};
   var mat = null;
   
+  // ATENÇÃO COMENTA ISSO DEPOIS QUE ELE RODA NA SEGUNDA VEZ
+  // localStorage.removeItem("matricula");
+
+  // CRIAR O OBJETO MODEL QUANDO ELE NÃO EXITIR
   $scope.createModal = function(){
     if($scope.modal){
         $scope.openModal();
@@ -25,7 +29,17 @@ angular.module('starter.controllers', [])
           $scope.modal.show();
         });
 
-          // Open the login modal
+          
+    }
+  }
+        // Create the login modal that we will use later
+        $ionicModal.fromTemplateUrl('templates/login.html', {
+          scope: $scope
+        }).then(function(modal) {
+          $scope.modal = modal;
+        });
+
+        // Open the login modal
           $scope.login = function() {
             $scope.modal.show();
           };
@@ -34,8 +48,6 @@ angular.module('starter.controllers', [])
         $scope.closeLogin = function() {
           $scope.modal.hide();
         };
-    }
-}
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
